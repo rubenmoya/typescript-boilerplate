@@ -1,0 +1,41 @@
+{
+  "name": "boilerplate-typescript",
+  "version": "0.0.1",
+  "description": "A boilerplate for TypeScript projects",
+  "keywords": ["boilerplate", "typescript"],
+  "main": "dist/main.js",
+  "exports": {
+    ".": {
+      "import": "./dist/main.js",
+      "require": "./dist/main.cjs"
+    }
+  },
+  "homepage": "https://github.com/rubenmoya/typescript-boilerplate",
+  "bugs": {
+    "url": "https://github.com/rubenmoya/typescript-boilerplate/issues"
+  },
+  "author": "Rubén Moya",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rubenmoya/typescript-boilerplate.git"
+  },
+  "license": "UNLICENSED",
+  "files": ["dist"],
+  "type": "module",
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.15.4",
+    "@biomejs/biome": "^1.9.4",
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  },
+  "scripts": {
+    "build": "tsup src/main.ts",
+    "ci": "pnpm run build && pnpm run check-exports && pnpm run lint:ci && pnpm run test",
+    "lint:fix": "biome check . --write",
+    "lint:ci": "biome ci",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check-exports": "attw --pack ."
+  }
+}
